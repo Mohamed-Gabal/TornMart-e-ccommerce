@@ -19,3 +19,139 @@
     scroll-behavior: smooth;
   }
 }
+.bg_element {
+  position: relative;
+}
+.bg_element::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 200px;
+  background-color: #ffc904;
+  filter: blur(250px);
+  z-index: -1;
+}
+.bg_element::before {
+  content: "";
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 500px;
+  height: 200px;
+  background-color: #ffc904;
+  filter: blur(250px);
+  z-index: -1;
+}
+.hero_bg {
+  width: 100%;
+  height: 60vh;
+  background-image: url(assets/hero-banner.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+}
+.hero_image img {
+  width: 75%;
+  height: 100%;
+}
+.hero_content h1 {
+  opacity: 0;
+  animation: Anim-fade-bottom 0.3s 0.6s forwards linear;
+}
+.hero_content h5 {
+  opacity: 0;
+  animation: Anim-fade-bottom 0.3s 0.9s forwards linear;
+}
+.hero_content .hero_span {
+  opacity: 0;
+  animation: Anim-fade-bottom 0.3s 1.1s forwards linear;
+}
+.hero_content button {
+  opacity: 0;
+  animation: Anim-fade-bottom 0.3s 1.2s forwards linear;
+}
+.hero_image {
+  opacity: 0;
+  animation: Anim-fade-bottom 0.3s 1.5s forwards linear;
+}
+@keyframes Anim-fade-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+/* Hero MQ Section */
+@media (max-width: 1399px) {
+  .middle_nav {
+    flex-wrap: wrap;
+  }
+  .get_help {
+    width: 100%;
+    justify-content: start;
+  }
+  .nav_menu {
+    width: 60%;
+  }
+}
+@media (max-width: 991px) {
+  .middle_nav {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+  }
+  .get_help {
+    width: 100%;
+    justify-content: start;
+  }
+  .product_search {
+    width: 100%;
+  }
+  .hide {
+    display: none !important;
+  }
+  .hero_content {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .hide {
+    display: none !important;
+  }
+}
+@media (max-width: 575px) {
+  .hide {
+    display: none !important;
+  }
+  .product_search select {
+    width: 50%;
+  }
+  .nav_menu li a {
+    font-size: 1rem;
+  }
+  .top_nav {
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    text-align: start;
+  }
+  .top_nav ul {
+    width: 100%;
+    justify-content: start;
+    margin-top: 20px;
+  }
+}
+/* Banner */
+@media (max-width: 575px) {
+  .banner_1 {
+    background-size: 800%;
+    background-repeat: no-repeat;
+  }
+}
