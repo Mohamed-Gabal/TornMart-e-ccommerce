@@ -32,12 +32,29 @@ import bannerCard1 from "../../assets/banner-card-3.jpg";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { CiShoppingCart } from "react-icons/ci";
+
 
 const Index = () => {
   const products = ProductData.Products;
   const specialOffer = products.find((p) => p.id === 7);
 
   const navigate = useNavigate();
+  const handleAddToCart = (product) => {
+    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const exists = cart.some(item => item.id === product.id);
+
+    if(!exists) {
+      const updatedCart = [...cart, {...product, quantity: 1}];
+      localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+      toast.success('Item added to cart');
+    } else {
+      toast.warning('Item already in cart');
+    }
+    setTimeout(() => {
+      navigate('/cart');
+    }, 1000);
+  }
   return (
     <>
       <div className="bg_element"></div>
@@ -253,6 +270,22 @@ const Index = () => {
               <div key={product.id} className="bg-white show-md rounded-xl p-4 flex flex-col items-start hover:shadow-xl transition duration-300 group border-gray-100 cursor-pointer">
                 <p className="text-xs text-white font-bold mb-1 bg-red-600 px-3 py-2 rounded">{product.category}</p>
                 <img onClick={() => navigate(`product/${product.id}`)} src={product.ProductsImage} alt={product.name} className="w-4/5 h-32 object-contain group-hover:scale-105 transition-transform duration-300" />
+                <h4 onClick={() => navigate(`/product/${product.id}`)} className="text-lg font-medium mt-3 text-yellow-800 hover:underline line-clamp-2">
+                  {product.name}
+                </h4>
+                <div className="flex mt-5 flex-row items-center justify-between w-full">
+                  {product.OldPrice ? (
+                    <div className="mt-1 text-md">
+                      <span className="line-through text-gray-400">${product.OldPrice}</span>
+                      <span className="text-red-600 font-bold">${product.Price}</span>
+                    </div>
+                  ) : (
+                    <div className="text-lg font-semibold mt-1">${product.Price}</div>
+                  )}
+                  <button onClick={() => handleAddToCart(product)} className="bg-yellow-400 text-white text-2xl rounded-full w-[45px] h-[45px] hover:bg-red-500 hover:shadow-xl transition flex items-center justify-center cursor-pointer">
+                    <CiShoppingCart />
+                  </button>
+                </div>
               </div>
             ))}
           </div> 
