@@ -17,23 +17,10 @@ import banner5 from "../../assets/banner-5.jpg";
 
 import ProductData from "../../Data.json";
 
-import bannerImg2 from "../../assets/banner.jpg";
-
-import brand1 from "../../assets/dell.png";
-import brand2 from "../../assets/samsung.png";
-import brand3 from "../../assets/sanyo.png";
-import brand4 from "../../assets/lenovo.png";
-import brand5 from "../../assets/oppo.png";
-import brand6 from "../../assets/panasonic.png";
-import brand7 from "../../assets/asus.png";
-
-import bannerCard1 from "../../assets/banner-card-3.jpg";
-
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CiShoppingCart } from "react-icons/ci";
-
 
 const Index = () => {
   const products = ProductData.Products;
@@ -41,20 +28,20 @@ const Index = () => {
 
   const navigate = useNavigate();
   const handleAddToCart = (product) => {
-    const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const exists = cart.some(item => item.id === product.id);
+    const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const exists = cart.some((item) => item.id === product.id);
 
-    if(!exists) {
-      const updatedCart = [...cart, {...product, quantity: 1}];
-      localStorage.setItem('cartItems', JSON.stringify(updatedCart));
-      toast.success('Item added to cart');
+    if (!exists) {
+      const updatedCart = [...cart, { ...product, quantity: 1 }];
+      localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+      toast.success("Item added to cart");
     } else {
-      toast.warning('Item already in cart');
+      toast.warning("Item already in cart");
     }
     setTimeout(() => {
-      navigate('/cart');
+      navigate("/cart");
     }, 1000);
-  }
+  };
   return (
     <>
       <div className="bg_element"></div>
@@ -266,29 +253,53 @@ const Index = () => {
         {/* Products Cards */}
         <div className="lg:col-span-3">
           <div className="product_wrap grid grid-cols-2 md:grid-cols-4 gap-6">
-            {products.slice(0, 8) .map(product => (
-              <div key={product.id} className="bg-white show-md rounded-xl p-4 flex flex-col items-start hover:shadow-xl transition duration-300 group border-gray-100 cursor-pointer">
-                <p className="text-xs text-white font-bold mb-1 bg-red-600 px-3 py-2 rounded">{product.category}</p>
-                <img onClick={() => navigate(`product/${product.id}`)} src={product.ProductsImage} alt={product.name} className="w-4/5 h-32 object-contain group-hover:scale-105 transition-transform duration-300" />
-                <h4 onClick={() => navigate(`/product/${product.id}`)} className="text-lg font-medium mt-3 text-yellow-800 hover:underline line-clamp-2">
+            {products.slice(0, 8).map((product) => (
+              <div
+                key={product.id}
+                className="bg-white show-md rounded-xl p-4 flex flex-col items-start hover:shadow-xl transition duration-300 group border-gray-100 cursor-pointer"
+              >
+                <p className="text-xs text-white font-bold mb-1 bg-red-600 px-3 py-2 rounded">
+                  {product.category}
+                </p>
+                <img
+                  onClick={() => navigate(`product/${product.id}`)}
+                  src={product.ProductsImage}
+                  alt={product.name}
+                  className="w-4/5 h-32 object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+                <h4
+                  onClick={() => navigate(`/product/${product.id}`)}
+                  className="text-lg font-medium mt-3 text-yellow-800 hover:underline line-clamp-2"
+                >
                   {product.name}
                 </h4>
-                <div className="flex mt-5 flex-row items-center justify-between w-full">
-                  {product.OldPrice ? (
-                    <div className="mt-1 text-md">
-                      <span className="line-through text-gray-400">${product.OldPrice}</span>
-                      <span className="text-red-600 font-bold">${product.Price}</span>
-                    </div>
-                  ) : (
-                    <div className="text-lg font-semibold mt-1">${product.Price}</div>
-                  )}
-                  <button onClick={() => handleAddToCart(product)} className="bg-yellow-400 text-white text-2xl rounded-full w-[45px] h-[45px] hover:bg-red-500 hover:shadow-xl transition flex items-center justify-center cursor-pointer">
+                <div className="flex mt-5 items-center justify-between w-full gap-2">
+                  <div className="flex-1 min-w-0">
+                    {product.OldPrice ? (
+                      <div className="text-md truncate">
+                        <span className="line-through text-gray-400 mr-1">
+                          ${product.OldPrice}
+                        </span>
+                        <span className="text-red-600 font-bold">
+                          ${product.Price}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="text-lg font-semibold truncate">
+                        ${product.Price}
+                      </div>
+                    )}
+                  </div>
+                  <button
+                    onClick={() => handleAddToCart(product)}
+                    className="flex-shrink-0 bg-yellow-400 text-white text-2xl rounded-full w-[45px] h-[45px] hover:bg-red-500 hover:shadow-xl transition flex items-center justify-center"
+                  >
                     <CiShoppingCart />
                   </button>
                 </div>
               </div>
             ))}
-          </div> 
+          </div>
         </div>
       </div>
     </>

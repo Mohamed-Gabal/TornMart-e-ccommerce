@@ -208,6 +208,59 @@ const ProductDetails = () => {
           </form>
         </div>
       </div>
+      {/* Brands */}
+      <div className="px-[8%] lg:px-[12%] py-10">
+        <Swiper 
+        slidesPerView={2} 
+        spaceBetween={20} 
+        loop={true} 
+        autoplay={{delay: 1000}} 
+        breakpoints={{
+          1399: {slidesPerView: 5},
+          1199: {slidesPerView: 5},
+          991: {slidesPerView: 4},
+          575: {slidesPerView: 3},
+          0: {slidesPerView: 3},
+        }} 
+        modules={[Autoplay]}
+        >
+          <SwiperSlide>
+            <div className="flex items-center justify-center h-20">
+              <img src={brand1} alt="" className="invert-[0.3] object-contain hover:invert-[0] cursor-pointer transition" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex items-center justify-center h-20">
+              <img src={brand2} alt="" className="invert-[0.3] object-contain hover:invert-[0] cursor-pointer transition" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex items-center justify-center h-20">
+              <img src={brand3} alt="" className="invert-[0.3] object-contain hover:invert-[0] cursor-pointer transition" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex items-center justify-center h-20">
+              <img src={brand4} alt="" className="invert-[0.3] object-contain hover:invert-[0] cursor-pointer transition" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex items-center justify-center h-20">
+              <img src={brand5} alt="" className="invert-[0.3] object-contain hover:invert-[0] cursor-pointer transition" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex items-center justify-center h-20">
+              <img src={brand6} alt="" className="invert-[0.3] object-contain hover:invert-[0] cursor-pointer transition" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex items-center justify-center h-20">
+              <img src={brand7} alt="" className="invert-[0.3] object-contain hover:invert-[0] cursor-pointer transition" />
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </>
   );
 };

@@ -19,6 +19,9 @@
     scroll-behavior: smooth;
   }
 }
+html, body {
+  overflow-x: hidden;
+}
 .bg_element {
   position: relative;
 }
