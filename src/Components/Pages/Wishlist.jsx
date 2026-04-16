@@ -3,6 +3,12 @@ import { BsHeart } from "react-icons/bs";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import { IoIosClose } from "react-icons/io";
+import { RiCheckboxCircleLine, RiShoppingCart2Line } from "react-icons/ri";
+import { FaArrowLeft } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+
+
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -64,7 +70,7 @@ const Wishlist = () => {
                   <tr key={product.id} className="bg-white border rounded-xl shadow-sm">
                     <td className="align-middle text-center">
                       <button onClick={() => removeFromWishlist} className="text-xl text-gray-400 hover:text-red-500 p-3" title="Remove">
-                        <BsHeart />
+                        <IoIosClose />
                       </button>
                     </td>
                     <td className="flex items-center gap-4 px-2 py-4">
@@ -74,13 +80,18 @@ const Wishlist = () => {
                         <p className="text-sm text-gray-500">{product.category}</p>
                       </div>
                     </td>
-                    <td className="text-center text-gray-800 font-semibold text-base">
+                    <td className="text-center text-gray-80 font-semibold text-base">
                       ${parseFloat(product.Price).toFixed(2)}
                     </td>
                     <td className="text-center">
                       <span className="inline-flex items-center gap-1 text-green-600 text-sm font-medium">
-                        
+                        <RiCheckboxCircleLine className="text-lg"/> In Stock
                       </span>
+                    </td>
+                    <td>
+                      <button onClick={() => addToCart(product)} className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-yellow-400 text-sm font-semibold hover:bg-yellow-500 transition">
+                        <RiShoppingCart2Line /> Add To Cart
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -88,6 +99,36 @@ const Wishlist = () => {
             </table>
           </div>
         )}
+        {/* Mobile View */}
+        <div className="md:hidden space-y-6">
+          {wishlist.map(product => (
+            <div key={product.id} className="bg-white border border-gray-200 shadow-sm rounded-2xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <h3 className="text-base font-semibold text-gray-800 line-clamp-1">{product.name}</h3>
+                <button onClick={() => removeFromWishlist(product.id)} className="text-gray-400 hover:text-red-500 text-2xl" title="Remove">
+                  <IoIosClose />
+                </button>
+              </div>
+              <img src={product.ProductsImage} alt={product.name} className="w-full h-40 object-contain" />
+              <p className="text-sm text-gray-500">{product.category}</p>
+              <div className="text-base font-semibold text-gray-800">
+                Price: ${parseFloat(product.Price).toFixed(2)}
+              </div>
+              <div className="text-sm text-green-600 font-medium flex items-center gap-2">
+                <RiCheckboxCircleLine className="text-lg" /> In Sock
+              </div>
+              <button onClick={() => addToCart(product)} className="w-full inline-flex justify-center items-center gap-2 px-5 py-2 rounded-full bg-yellow-400 hover:bg-yellow-500 ">
+                <RiShoppingCart2Line /> Add To Cart
+              </button>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link to='/shop' className='inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-yellow-500 border border-yellow-500 rounded-full hover:bg-yellow-500 hover:text-white transition-all'>
+            <FaArrowLeft /> Continue Shopping
+          </Link>
+        </div>
       </div>
     </>
   );

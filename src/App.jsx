@@ -5,6 +5,7 @@ import Index from "./Components/Pages/Index";
 import ProductDetails from './Components/Pages/ProductDetails';
 import WishList from './Components/Pages/Wishlist';
 import { ToastContainer } from "react-toastify";
+import Cart from "./Components/Pages/Cart";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Index />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/wishList" element={<WishList />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
         <ToastContainer />
       </Router>
