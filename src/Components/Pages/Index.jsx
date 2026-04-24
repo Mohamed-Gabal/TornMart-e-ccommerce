@@ -9,6 +9,8 @@ import heroImg from "../../assets/hero.png";
 import heroImg2 from "../../assets/hero-2.png";
 import heroImg3 from "../../assets/hero-3.png";
 
+import bannerCard1 from '../../assets/banner-card-1.jpg';
+
 import banner1 from "../../assets/banner-1.jpg";
 import banner2 from "../../assets/banner-2.jpg";
 import banner3 from "../../assets/banner-3.jpg";
@@ -894,6 +896,22 @@ const Index = () => {
           </SwiperSlide>
         </Swiper>
       </div>
+      {/* Banner 2 */}
+      <div className="px-[8%] lg:px-[12%] py-10">
+        <div className="banner_1 flex flex-col justify-center gap-5 bg-cover bg-center rounded-xl md:p-8" style={{backgroundImage: `url(${banner5})`}}>
+          <div className="flex items-center gap-4">
+            <h3 className="text-4xl font-light">SHOP AND <span className="font-bold">SAVE BIG</span> ON HOTTEST TABLETS</h3>
+            <small className="bg-yellow-400 text-white text-xl px-4 py-2 text-center w-fit rounded-md rounded-tl-none hide">
+              <span className="font-thin text-md text-black">STARTING AT</span>
+              <div className="text-3xl font-bold text-gray-800 p-2 px-5">
+                <sup>$</sup>
+                748
+                <sup>99</sup>
+              </div>
+            </small>
+          </div>
+        </div>
+      </div>
       {/* Brands */}
       <div className="px-[8%] lg:px-[12%] py-10">
         <Swiper
@@ -974,6 +992,177 @@ const Index = () => {
             </div>
           </SwiperSlide>
         </Swiper>
+      </div>
+      {/* Section Title */}
+      <div className="section_title px-[8%] lg:px-[12%] my-10"> 
+        <span className="text-xl font-semibold bg-yellow-300 px-5 py-2 rounded-full">
+          Top Products
+        </span>
+        <h1 className="text-5xl font-bold font-bricolage mt-5">
+          Our Top Products
+        </h1>
+      </div>
+      {/* Top Products */}
+      <div className="px-[8%] lg:px-[12%] py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-8">
+          {/* Col 1 */}
+          <div>
+            <h2 className="top_product text-xl font-semibold font-bricolage border-b border-yellow-200 pb-1">Featured Products</h2>
+            <div className="flex flex-col gap-5 mt-9">
+            {products.slice(1, 4).map((product) => (
+                  <div
+                    key={product.id}
+                    className="bg-white show-md rounded-xl p-4 flex flex-col items-start hover:shadow-xl transition duration-300 group border-gray-100 cursor-pointer"
+                  >
+                    <p className="text-xs text-white font-bold mb-1 bg-red-600 px-3 py-2 rounded">
+                      {product.category}
+                    </p>
+                    <img
+                      onClick={() => navigate(`product/${product.id}`)}
+                      src={product.ProductsImage}
+                      alt={product.name}
+                      className="w-4/5 h-32 object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <h4
+                      onClick={() => navigate(`/product/${product.id}`)}
+                      className="text-lg font-medium mt-3 text-yellow-800 hover:underline line-clamp-2"
+                    >
+                      {product.name}
+                    </h4>
+                    <div className="flex mt-5 items-center justify-between w-full gap-2">
+                      <div className="flex-1 min-w-0">
+                        {product.OldPrice ? (
+                          <div className="text-md truncate">
+                            <span className="line-through text-gray-400 mr-1">
+                              ${product.OldPrice}
+                            </span>
+                            <span className="text-red-600 font-bold">
+                              ${product.Price}
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="text-lg font-semibold truncate">
+                            ${product.Price}
+                          </div>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className="flex-shrink-0 bg-yellow-400 text-white text-2xl rounded-full w-[45px] h-[45px] hover:bg-red-500 hover:shadow-xl transition flex items-center justify-center"
+                      >
+                        <CiShoppingCart />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+          {/* Col 2 */}
+          <div>
+            <h2 className="top_product text-xl font-semibold font-bricolage border-b border-yellow-200 pb-1">On Sale Products</h2>
+            <div className="flex flex-col gap-5 mt-9">
+            {products.slice(5, 8).map((product) => (
+                  <div
+                    key={product.id}
+                    className="bg-white show-md rounded-xl p-4 flex flex-col items-start hover:shadow-xl transition duration-300 group border-gray-100 cursor-pointer"
+                  >
+                    <p className="text-xs text-white font-bold mb-1 bg-red-600 px-3 py-2 rounded">
+                      {product.category}
+                    </p>
+                    <img
+                      onClick={() => navigate(`product/${product.id}`)}
+                      src={product.ProductsImage}
+                      alt={product.name}
+                      className="w-4/5 h-32 object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <h4
+                      onClick={() => navigate(`/product/${product.id}`)}
+                      className="text-lg font-medium mt-3 text-yellow-800 hover:underline line-clamp-2"
+                    >
+                      {product.name}
+                    </h4>
+                    <div className="flex mt-5 items-center justify-between w-full gap-2">
+                      <div className="flex-1 min-w-0">
+                        {product.OldPrice ? (
+                          <div className="text-md truncate">
+                            <span className="line-through text-gray-400 mr-1">
+                              ${product.OldPrice}
+                            </span>
+                            <span className="text-red-600 font-bold">
+                              ${product.Price}
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="text-lg font-semibold truncate">
+                            ${product.Price}
+                          </div>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className="flex-shrink-0 bg-yellow-400 text-white text-2xl rounded-full w-[45px] h-[45px] hover:bg-red-500 hover:shadow-xl transition flex items-center justify-center"
+                      >
+                        <CiShoppingCart />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+          {/* Col 3 */}
+          <div>
+            <h2 className="top_product text-xl font-semibold font-bricolage border-b border-yellow-200 pb-1">Top Rated Products</h2>
+            <div className="flex flex-col gap-5 mt-9">
+            {products.slice(10, 13).map((product) => (
+                  <div
+                    key={product.id}
+                    className="bg-white show-md rounded-xl p-4 flex flex-col items-start hover:shadow-xl transition duration-300 group border-gray-100 cursor-pointer"
+                  >
+                    <p className="text-xs text-white font-bold mb-1 bg-red-600 px-3 py-2 rounded">
+                      {product.category}
+                    </p>
+                    <img
+                      onClick={() => navigate(`product/${product.id}`)}
+                      src={product.ProductsImage}
+                      alt={product.name}
+                      className="w-4/5 h-32 object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <h4
+                      onClick={() => navigate(`/product/${product.id}`)}
+                      className="text-lg font-medium mt-3 text-yellow-800 hover:underline line-clamp-2"
+                    >
+                      {product.name}
+                    </h4>
+                    <div className="flex mt-5 items-center justify-between w-full gap-2">
+                      <div className="flex-1 min-w-0">
+                        {product.OldPrice ? (
+                          <div className="text-md truncate">
+                            <span className="line-through text-gray-400 mr-1">
+                              ${product.OldPrice}
+                            </span>
+                            <span className="text-red-600 font-bold">
+                              ${product.Price}
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="text-lg font-semibold truncate">
+                            ${product.Price}
+                          </div>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className="flex-shrink-0 bg-yellow-400 text-white text-2xl rounded-full w-[45px] h-[45px] hover:bg-red-500 hover:shadow-xl transition flex items-center justify-center"
+                      >
+                        <CiShoppingCart />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+          <img src={bannerCard1} alt="" className="w-full object-contain" />
+        </div>
       </div>
     </>
   );

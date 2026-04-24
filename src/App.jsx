@@ -7,6 +7,8 @@ import WishList from './Components/Pages/Wishlist';
 import { ToastContainer } from "react-toastify";
 import Cart from "./Components/Pages/Cart";
 import Checkout from "./Components/Pages/Checkout";
+import Footer from "./Components/Footer/Footer";
+import About from "./Components/Pages/About";
 
 const App = () => {
   return (
@@ -19,7 +21,9 @@ const App = () => {
           <Route path="/wishList" element={<WishList />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/about" element={<About />} />
         </Routes>
+        <Footer />
         <ToastContainer />
       </Router>
     </>
