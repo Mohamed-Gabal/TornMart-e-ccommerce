@@ -34,7 +34,7 @@ import { CiShoppingCart } from "react-icons/ci";
 
 const Index = () => {
   const products = ProductData.Products;
-  const specialOffer = products.find((p) => p.id === 7);
+  const specialOffer = products.find((p) => p.specialOffer) || products[0];
 
   const navigate = useNavigate();
   const handleAddToCart = (product) => {
@@ -272,7 +272,7 @@ const Index = () => {
                   {product.category}
                 </p>
                 <img
-                  onClick={() => navigate(`product/${product.id}`)}
+                  onClick={() => navigate(`/product/${product.id}`)}
                   src={product.ProductsImage}
                   alt={product.name}
                   className="w-4/5 h-32 object-contain group-hover:scale-105 transition-transform duration-300"
@@ -1168,3 +1168,5 @@ const Index = () => {
   );
 };
 export default Index;
+
+

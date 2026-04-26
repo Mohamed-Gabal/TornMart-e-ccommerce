@@ -49,7 +49,8 @@
       "category": "Gaming",
       "OldPrice": "99.00",
       "Price": "79.00",
-      "ProductsImage": "/Product-07.png"
+      "ProductsImage": "/Product-07.png",
+      "specialOffer": true
     },
     {
       "id": 8,
