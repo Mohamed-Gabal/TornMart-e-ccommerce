@@ -193,8 +193,3 @@ footer::after {
   filter: invert(100%);
   z-index: -1;
 }
-
-/* Product MQ Section */
-@media (max-width: 1199px) {
-  .product_
-}

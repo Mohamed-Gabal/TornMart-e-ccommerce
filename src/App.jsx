@@ -10,6 +10,7 @@ import Checkout from "./Components/Pages/Checkout";
 import Footer from "./Components/Footer/Footer";
 import About from "./Components/Pages/About";
 import Shop from "./Components/Pages/Shop";
+import Blog from "./Components/Pages/Blog";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/about" element={<About />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
         <Footer />
         <ToastContainer />
