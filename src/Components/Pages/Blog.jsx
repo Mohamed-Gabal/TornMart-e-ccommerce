@@ -6,9 +6,14 @@ import blogImg3 from '../../assets/blog-3.jpg';
 import blogImg4 from '../../assets/blog-4.jpg';
 import blogImg5 from '../../assets/blog-5.jpg';
 import { Link } from 'react-router-dom';
-import { RiCalendarLine } from "react-icons/ri";
+import { RiCalendarLine, RiInformationLine, RiBookmarkLine  } from "react-icons/ri";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { CiSearch } from "react-icons/ci";
+import { IoIosSearch } from "react-icons/io";
+import { CiViewTimeline } from "react-icons/ci";
+import { SlCalender } from "react-icons/sl";
+import { RiHashtag } from "react-icons/ri";
+
+
 
 const Blog = () => {
 
@@ -60,10 +65,70 @@ const Blog = () => {
             {/* Search */}
             <div className='border rounded-lg p-2 bg-yellow-500 shadow-sm'>
               <div className='flex items-center border rounded overflow-hidden bg-white'>
-                <CiSearch className='text-gray-500 px-3' />
+                <IoIosSearch className='text-gray-500 px-3' />
                 <input type='text' placeholder='Search...' className='w-full px-3 py-2 text-sm outline-none' />
               </div>
             </div>
+
+            {/* About */} 
+            <div className='border rounded-lg p-4 bg-white shadow-sm'>
+              <h4 className='text-lg font-semibold mb-2 flex items-center gap-2'>
+              <RiInformationLine className='text-yellow-500' />
+                About Blog
+              </h4>
+              <p className='text-sm text-gray-600'>Lorem ipsum sit amet, consectetur adipiscing elit, Sed viverra nec nulla vitae mollis.</p>
+            </div>
+
+            {/* Categories */}
+            <div className='border rounded-lg p-4 bg-white shadow-sm'>
+              <h4 className='text-lg font-semibold mb-2 flex items-center gap-2'>
+                <RiBookmarkLine  className='text-yellow-500' />
+                Categories
+              </h4> 
+              <ul className='text-sm text-gray-600 space-y-1'>
+                <li className='hover:text-yellow-500 cursor-pointer'>Design</li>
+                <li className='hover:text-yellow-500 cursor-pointer'>Technology</li>
+                <li className='hover:text-yellow-500 cursor-pointer'>Audio</li>
+                <li className='hover:text-yellow-500 cursor-pointer'>Lifestyle</li>
+              </ul> 
+            </div> 
+
+            {/* Recent Posts */}
+            <div className='border rounded-lg p-5 bg-white shadow-sm'>
+              <h4 className='text-lg font-semibold mb-4 flex items-center gap-2 text-gray-800'>
+                <CiViewTimeline  className='text-green-500 text-xl' />
+                Recent Posts 
+              </h4>
+              <ul className='space-y-4'>
+                {blogPosts.map((post) => ( 
+                  <li key={post.id} className='flex items-center gap-4 group hover:bg-gray-50 p-2 rounded-md transition-all duration-300'>
+                    <img src={post.image} alt={post.title} className='w-16 h-16 object-cover rounded-md shadow-sm shrink-0' />
+                    <div className='flex flex-col'>
+                      <span className='text-sm font-medium text-gray-800 group-hover:text-yellow-500 transition'>{post.title}</span>
+                      <p className='text-xs text-gray-500 mt-1 flex items-center gap-1'>
+                        <SlCalender className='text-sm text-gray-400' />
+                        {post.meta}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              </div>
+
+              {/* Tags */}
+              <div className='border rounded-lg p-4 bg-white shadow-sm'>
+              <h4 className='text-lg font-semibold mb-2 flex items-center gap-2'>
+                <RiHashtag  className='text-pink-500' />
+                Tags
+              </h4>
+              <div className='flex flex-wrap gap-2 text-sm'>
+                {['tech', 'modern', 'video', 'bootstrap', 'theme', 'creative'].map((tag) => (
+                  <span key={tag} className='bg-gray-200 px-2 py-1 rounded  hover:bg-yellow-300 transform cursor-pointer'>
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+              </div>
            </aside>
         </div>
       </div>
