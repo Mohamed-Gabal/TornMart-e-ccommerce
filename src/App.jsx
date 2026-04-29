@@ -11,6 +11,9 @@ import Footer from "./Components/Footer/Footer";
 import About from "./Components/Pages/About";
 import Shop from "./Components/Pages/Shop";
 import Blog from "./Components/Pages/Blog";
+import FAQ from "./Components/Pages/FAQ";
+import Contact from "./Components/Pages/Contact";
+
 
 const App = () => {
   return (
@@ -26,6 +29,8 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
         <ToastContainer />
